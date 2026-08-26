@@ -1,0 +1,327 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+:root {
+    font-family: "Space Grotesk", sans-serif;
+    color: #1d252c;
+    background: #e8e4dd;
+    font-synthesis: none;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+}
+button,
+input {
+    font: inherit;
+}
+button {
+    cursor: pointer;
+}
+.app-shell {
+    min-height: 100vh;
+    padding: 28px 32px 32px;
+    background: radial-gradient(circle at 15% 10%, #f8f4ed 0, transparent 35%), #e8e4dd;
+}
+.topbar {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    max-width: 1480px;
+    margin: 0 auto 24px;
+}
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.7px;
+}
+.brand-mark {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    color: #f8f4ed;
+    background: #e85d3f;
+    border-radius: 9px;
+    font-size: 17px;
+}
+.board-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #77736e;
+    font:
+        12px "DM Mono",
+        monospace;
+    letter-spacing: 0.02em;
+}
+.status-dot {
+    width: 7px;
+    height: 7px;
+    background: #2f8f83;
+    border-radius: 50%;
+}
+.meta-divider {
+    height: 14px;
+    border-left: 1px solid #bbb5ac;
+    margin: 0 4px;
+}
+.export-button {
+    margin-left: auto;
+    padding: 10px 15px;
+    border: 1px solid #d2ccc3;
+    border-radius: 7px;
+    color: #1d252c;
+    background: #f8f4ed;
+    font-size: 13px;
+    font-weight: 600;
+}
+.export-button:hover {
+    background: #fffdf8;
+    border-color: #1d252c;
+}
+.theme-button {
+    padding: 7px 10px;
+    border: 1px solid #d2ccc3;
+    border-radius: 7px;
+    color: #1d252c;
+    background: transparent;
+    font-size: 20px;
+    line-height: 1;
+}
+.theme-button:hover {
+    background: #f8f4ed;
+}
+.workspace {
+    display: flex;
+    gap: 16px;
+    max-width: 1480px;
+    height: calc(100vh - 108px);
+    min-height: 480px;
+    margin: auto;
+}
+.toolbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 66px;
+    padding: 10px 0;
+    border: 1px solid #d5cfc5;
+    border-radius: 9px;
+    background: rgba(248, 244, 237, 0.75);
+}
+.tool-group,
+.color-picker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+.tool-button {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border: 0;
+    border-radius: 7px;
+    color: #77736e;
+    background: transparent;
+    font-size: 21px;
+}
+.tool-button:hover,
+.tool-button.active {
+    color: #1d252c;
+    background: #ded9d0;
+}
+.tool-button.active {
+    box-shadow: inset 3px 0 #e85d3f;
+}
+.pen-icon {
+    transform: rotate(-22deg);
+    display: block;
+}
+.tool-rule {
+    width: 30px;
+    margin: 12px 0;
+    border-top: 1px solid #d5cfc5;
+}
+.swatch {
+    width: 21px;
+    height: 21px;
+    padding: 0;
+    border: 2px solid transparent;
+    border-radius: 50%;
+}
+.swatch.selected {
+    outline: 2px solid #1d252c;
+    outline-offset: 3px;
+}
+.size-control {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: #77736e;
+}
+.size-preview {
+    display: block;
+    min-width: 7px;
+    min-height: 7px;
+    border-radius: 50%;
+    background: #1d252c;
+}
+input[type="range"] {
+    width: 42px;
+    accent-color: #e85d3f;
+    writing-mode: vertical-lr;
+    direction: rtl;
+    height: 68px;
+}
+.tool-spacer {
+    flex: 1;
+}
+.quiet {
+    font-size: 19px;
+    transform: rotate(180deg);
+}
+.canvas-wrap {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid #d5cfc5;
+    border-radius: 9px;
+    background-color: #fffdf8;
+    background-image: radial-gradient(#ddd8cf 1px, transparent 1px);
+    background-size: 24px 24px;
+    box-shadow: 0 12px 32px rgba(67, 60, 50, 0.05);
+}
+.board-surface {
+    position: absolute;
+    inset: 0;
+    background-size: 24px 24px;
+}
+.board {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+    cursor: crosshair;
+    background: transparent;
+}
+.canvas-label,
+.canvas-hint {
+    position: absolute;
+    z-index: 1;
+    color: #8c877f;
+    font:
+        11px "DM Mono",
+        monospace;
+    pointer-events: none;
+}
+.canvas-label {
+    top: 22px;
+    left: 26px;
+    color: #625d56;
+}
+.canvas-label span,
+.canvas-hint span {
+    color: #e85d3f;
+    padding: 0 5px;
+}
+.canvas-hint {
+    right: 25px;
+    bottom: 20px;
+}
+.dark-mode {
+    color: #f4f1e9;
+    background: radial-gradient(circle at 15% 10%, #30383c 0, transparent 35%), #202629;
+}
+.dark-mode .board-meta,
+.dark-mode .canvas-hint {
+    color: #9ba3a1;
+}
+.dark-mode .meta-divider,
+.dark-mode .tool-rule,
+.dark-mode .toolbar,
+.dark-mode .canvas-wrap {
+    border-color: #424b4e;
+}
+.dark-mode .toolbar {
+    background: rgba(37, 44, 47, 0.82);
+}
+.dark-mode .tool-button {
+    color: #9ba3a1;
+}
+.dark-mode .tool-button:hover,
+.dark-mode .tool-button.active {
+    color: #f4f1e9;
+    background: #394246;
+}
+.dark-mode .swatch.selected {
+    outline-color: #f4f1e9;
+}
+.dark-mode .export-button,
+.dark-mode .theme-button {
+    color: #f4f1e9;
+    border-color: #4d5759;
+    background: #2b3336;
+}
+.dark-mode .export-button:hover,
+.dark-mode .theme-button:hover {
+    background: #394246;
+    border-color: #7f8b8d;
+}
+.dark-mode .canvas-wrap,
+.dark-mode .board-surface {
+    background-color: #202629;
+    background-image: radial-gradient(#3a4447 1px, transparent 1px);
+}
+.dark-mode .canvas-label {
+    color: #c0c6c3;
+}
+@media (max-width: 600px) {
+    .app-shell {
+        padding: 18px 14px;
+    }
+    .topbar {
+        gap: 14px;
+        margin-bottom: 14px;
+    }
+    .board-meta {
+        display: none;
+    }
+    .export-button {
+        padding: 9px 11px;
+        font-size: 12px;
+    }
+    .workspace {
+        height: calc(100vh - 84px);
+        min-height: 400px;
+        gap: 10px;
+    }
+    .toolbar {
+        width: 52px;
+    }
+    .tool-button {
+        width: 36px;
+        height: 38px;
+    }
+    .canvas-label {
+        top: 14px;
+        left: 16px;
+    }
+    .canvas-hint {
+        right: 14px;
+        bottom: 14px;
+        font-size: 9px;
+    }
+}
